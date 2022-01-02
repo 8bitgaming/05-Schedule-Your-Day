@@ -18,21 +18,40 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
-    <title>Work Day Scheduler</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Schedule Your Day</title>
   </head>
 
   <body>
     <header class="jumbotron">
-      <h1 class="display-3">Work Day Scheduler</h1>
+      <h1 class="display-3">Schedule Your Day</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      <div class="row justify-content-around">
+        <div class="col-1 border-top border-bottom border-right border-dark">9AM</div>
+        <div class="col-10 bg-light border-bottom border-white"></div>
+        <div class="col-1 bg-info"></div>
+
+
+        <div class="col-12 bg-primary">10AM</div>
+        <div class="col-12 bg-primary">11AM</div>
+        <div class="col-12 bg-primary">12PM</div>
+        <div class="col-12 bg-primary">1PM</div>
+        <div class="col-12 bg-primary">2PM</div>
+        <div class="col-12 bg-primary">3PM</div>
+        <div class="col-12 bg-primary">4PM</div>
+        <div class="col-12 bg-primary">5PM</div>
+
+      </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
