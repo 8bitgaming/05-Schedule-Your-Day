@@ -1,29 +1,19 @@
 //global variables
 let currentHour = moment().hour();
-let tasks = [
-    
-]
+let tasks = {
+    9: "9 AM task",
+    10: "10aM task",
+    11: "",
+    12: "",
+    13: "",
+    14: "",
+    15: "",
+    16: "",
+    17: "",
+}
 
 // let loadTasks = function() {
 //     tasks = JSON.parse(localStorage.getItem("tasks"));
-  
-//     // if nothing in localStorage, create a new object to track all task status arrays
-//     if (tasks.length === 0) {[
-//       task = {
-//         id: "",
-//         text: "",
-//     }];
-//     }
-  
-//     console.log(tasks)
-    // loop over object properties
-//     $.each(tasks, function(list, arr) {
-//       // then loop over sub-array
-//       arr.forEach(function(task) {
-//         createTask(task.text, task.date, list);
-//       });
-//     });
-//   };
   
 //   var saveTasks = function() {
 //     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -52,15 +42,20 @@ $(".task-input").on("click", function() {
     var textInput = $("<textarea>").addClass("col-10").val(text);
     $(this).replaceWith(textInput);
 
+    //use styling instead of swaping the elements
+
     textInput.trigger("focus");
+
+    $(".task-input").on("blur", "textarea", function() {
+        let taskD = $("<div>")
+            .addClass("col-10 border-bottom border-white task-input")
+            .text(text)
+    $(this).replaceWith(taskD)
+    
+    });
+
 })
 
-$(".task-input").on("blur", "textarea", function() {
-    let taskD = $("<div>")
-        .addClass("col-10 border-bottom border-white task-input")
-        .text(text)
-$(this).replaceWith(taskD)
 
-});
 
 //save and retrieve from local storage
