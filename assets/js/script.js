@@ -1,61 +1,62 @@
 //global variables
+// let taskInputEl = document.getElementById('.task-input');
 let currentHour = moment().hour();
-let tasks = {
-    9: "9 AM task",
-    10: "10aM task",
-    11: "",
-    12: "",
-    13: "",
-    14: "",
-    15: "",
-    16: "",
-    17: "",
-}
+let tasks = {}
 
-// let loadTasks = function() {
-//     tasks = JSON.parse(localStorage.getItem("tasks"));
+//save any updated task to local storage
+let saveTasks = function() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    return;
+};
   
-//   var saveTasks = function() {
-//     localStorage.setItem("tasks", JSON.stringify(tasks));
-//   };
-  
+//Check if tasks exists as local storage object, if not create, then set background color and load data
+let loadTasks = function() {
+    if (!localStorage.getItem("tasks")) {
+        tasks = {
+            9: "",
+            10: "",
+            11: "",
+            12: "",
+            13: "",
+            14: "",
+            15: "",
+            16: "",
+            17: "",
+        } 
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    } else {
+            tasks = JSON.parse(localStorage.getItem("tasks")); 
+        }
 
-//Update background color in table against current time
-for (i=9; i < 18; i++) {
-    let hourBlock = $("#" + i)
-    if (i < currentHour) {
-        hourBlock.addClass("bg-secondary")
-    } else if ( i > currentHour) {
-        hourBlock.addClass("bg-primary")
-    } else if (i = currentHour) {
-        hourBlock.addClass("bg-success")
+    for (i=9; i < 18; i++) {
+        let hourBlock = $("#" + i)
+        if (i < currentHour) {
+            hourBlock.addClass("bg-secondary")
+        } else if ( i > currentHour) {
+            hourBlock.addClass("bg-primary")
+        } else if (i = currentHour) {
+            hourBlock.addClass("bg-success")
+        }
+        hourBlock.text(tasks[i])
     }
 }
+
 
 //allow text entry in table
 
 $(".task-input").on("click", function() {
-    var text = $(this)
-      .text()
-      .trim();
+       
+    var text = $.trim($("#9").val());
+    //   .text()
+    //   .trim();
 
-    var textInput = $("<textarea>").addClass("col-10").val(text);
-    $(this).replaceWith(textInput);
+      console.log(text)
 
-    //use styling instead of swaping the elements
+      //event.target - check this out
 
-    textInput.trigger("focus");
+    //get ID and update object with text
 
-    $(".task-input").on("blur", "textarea", function() {
-        let taskD = $("<div>")
-            .addClass("col-10 border-bottom border-white task-input")
-            .text(text)
-    $(this).replaceWith(taskD)
-    
-    });
+ 
 
 })
-
-
-
-//save and retrieve from local storage
+loadTasks()
