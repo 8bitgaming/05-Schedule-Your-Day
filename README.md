@@ -13,7 +13,7 @@ This easy to use site lets you plan out your schedule with an easy-to-use daily 
 ## Website
 https://8bitgaming.github.io/05-Schedule-Your-Day/
 
-![screenshot of Schedule Your Day planner](./assets/images/screenshot.PNG?raw=true)
+![screenshot of Schedule Your Day planner](./assets/images/screenshot.png?raw=true)
 
 
 ## Instructions
