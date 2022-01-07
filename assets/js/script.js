@@ -1,7 +1,9 @@
-  
+let currentHour = moment().hour();
+
+
 //Check if tasks exists as local storage object, if not create, then set background color and load data from local storage
 let loadTasks = function() {
-    let currentHour = moment().hour();
+    
 
     if (!localStorage.getItem("tasks")) {
         tasks = {
