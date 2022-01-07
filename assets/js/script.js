@@ -1,16 +1,8 @@
-//global variables
-// let taskInputEl = document.getElementById('.task-input');
-let currentHour = moment().hour();
-let tasks = {}
-
-//save any updated task to local storage
-let saveTasks = function() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    return;
-};
   
-//Check if tasks exists as local storage object, if not create, then set background color and load data
+//Check if tasks exists as local storage object, if not create, then set background color and load data from local storage
 let loadTasks = function() {
+    let currentHour = moment().hour();
+
     if (!localStorage.getItem("tasks")) {
         tasks = {
             9: "",
@@ -31,32 +23,29 @@ let loadTasks = function() {
     for (i=9; i < 18; i++) {
         let hourBlock = $("#" + i)
         if (i < currentHour) {
-            hourBlock.addClass("bg-secondary")
+            hourBlock.addClass("past")
         } else if ( i > currentHour) {
-            hourBlock.addClass("bg-primary")
+            hourBlock.addClass("present")
         } else if (i = currentHour) {
-            hourBlock.addClass("bg-success")
+            hourBlock.addClass("future")
         }
         hourBlock.text(tasks[i])
     }
 }
 
+//Once focus is lost on the textarea it will automatically update the object
+$(".task-input").on("blur", function(){
+    let id = $(this).attr('id')
+    let text = $(this).val().trim()
 
-//allow text entry in table
+    tasks[id] = text
 
-$(".task-input").on("click", function() {
-       
-    var text = $.trim($("#9").val());
-    //   .text()
-    //   .trim();
+    })
 
-      console.log(text)
-
-      //event.target - check this out
-
-    //get ID and update object with text
-
- 
-
+//when a save button is clicked - any changes to the object will be updated in local storage
+$(".save-button").on("click", function() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    loadTasks()
 })
+
 loadTasks()

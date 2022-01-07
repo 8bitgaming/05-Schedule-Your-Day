@@ -17,7 +17,9 @@ https://8bitgaming.github.io/05-Schedule-Your-Day/
 
 
 ## Instructions
-* TBD
+* Enter your meeting/event information in the provided text box for the appropriate time
+* Use the save icons to save your information
+* Time blocks will change color based on if the time has passed, is current or in the future
 
 ## Contribution
 Made with ❤️ by Jeremy
