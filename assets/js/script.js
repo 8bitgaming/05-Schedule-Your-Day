@@ -1,5 +1,9 @@
 let currentHour = moment().hour();
+let dayOfWeek = moment().format('dddd');
+let currentDay = moment().format('MMMM Do YYYY');
 
+
+$("#currentDay").text(`${dayOfWeek}, ${currentDay}`)
 
 //Check if tasks exists as local storage object, if not create, then set background color and load data from local storage
 let loadTasks = function() {
